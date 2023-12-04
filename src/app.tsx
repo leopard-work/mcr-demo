@@ -14,7 +14,7 @@ export type dataPropsElem = {
 
 function App() {
   const data = useRef<dataPropsElem[]>([]);
-  const url = "./src/mocks/data.json";
+  const url = "data.json";
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
