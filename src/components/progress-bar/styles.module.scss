@@ -1,0 +1,28 @@
+.wrapper {
+  margin-bottom: 20px;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+}
+
+.item {
+  width: 50%;
+  height: 8px;
+
+  &[class~="color1"] {
+    background-color: var(--color-icon1);
+  }
+
+  &[class~="color2"] {
+    background-color: var(--color-icon2);
+  }
+
+  &[class~="color3"] {
+    background-color: var(--color-icon3);
+  }
+
+  &[class~="color4"] {
+    background-color: var(--color-icon4);
+  }
+}

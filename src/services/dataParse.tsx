@@ -1,13 +1,10 @@
-import {
-  CButton,
-  CButtonGroup,
-  CProgress,
-  CProgressStacked,
-} from "@coreui/react";
 import styles from "@views/home-page/home-page.module.scss";
 import Variant from "@components/variant";
 import { useEffect, useState } from "react";
 import { dataPropsElem } from "../app";
+import ProgressIcon from "@components/progress-icon";
+import ProgressBar from "@components/progress-bar";
+import Button from "@components/button";
 
 const CURRENT_DATE = new Date("2023-12-04 12:00").getTime();
 
@@ -48,14 +45,8 @@ const DataParse = (data: dataPropsElem[]) => {
       pastTime = CURRENT_DATE - 60 * 60 * 144 * 1000;
     }
 
-    nowData = Object.values(data).filter(
-      (elem) => new Date(elem.date).getTime() > nowTime,
-    );
-    pastData = Object.values(data).filter(
-      (elem) =>
-        new Date(elem.date).getTime() > pastTime &&
-        nowTime >= new Date(elem.date).getTime(),
-    );
+    nowData = Object.values(data).filter((elem) => new Date(elem.date).getTime() > nowTime);
+    pastData = Object.values(data).filter((elem) => new Date(elem.date).getTime() > pastTime && nowTime >= new Date(elem.date).getTime());
 
     let tmpErrors500 = 0;
     let tmpErrors501 = 0;
@@ -70,11 +61,7 @@ const DataParse = (data: dataPropsElem[]) => {
       tmpErrors501 += elem["errors-501"];
       tmpErrors502 += elem["errors-502"];
       tmpErrorsOther += elem["errors-other"];
-      nowErrors +=
-        elem["errors-500"] +
-        elem["errors-501"] +
-        elem["errors-502"] +
-        elem["errors-other"];
+      nowErrors += elem["errors-500"] + elem["errors-501"] + elem["errors-502"] + elem["errors-other"];
       nowZeros += elem["zeros"];
       nowTimeouts += elem["timeouts"];
     });
@@ -84,11 +71,7 @@ const DataParse = (data: dataPropsElem[]) => {
     let pastTimeouts = 0;
 
     pastData.map((elem) => {
-      pastErrors +=
-        elem["errors-500"] +
-        elem["errors-501"] +
-        elem["errors-502"] +
-        elem["errors-other"];
+      pastErrors += elem["errors-500"] + elem["errors-501"] + elem["errors-502"] + elem["errors-other"];
       pastZeros += elem["zeros"];
       pastTimeouts += elem["timeouts"];
     });
@@ -97,65 +80,27 @@ const DataParse = (data: dataPropsElem[]) => {
     setZeros((((nowZeros - pastZeros) / pastZeros) * 100) | 0);
     setTimeouts((((nowTimeouts - pastTimeouts) / pastTimeouts) * 100) | 0);
     setErrorsColor((nowErrors - pastErrors) / pastErrors > 0 ? "green" : "red");
-    setZerosColor(
-      ((nowZeros - pastZeros) / pastZeros) * 100 > 0 ? "green" : "red",
-    );
-    setTimeoutsColor(
-      (nowTimeouts - pastTimeouts) / pastTimeouts > 0 ? "green" : "red",
-    );
+    setZerosColor(((nowZeros - pastZeros) / pastZeros) * 100 > 0 ? "green" : "red");
+    setTimeoutsColor((nowTimeouts - pastTimeouts) / pastTimeouts > 0 ? "green" : "red");
     setErrors500(tmpErrors500);
     setErrors501(tmpErrors501);
     setErrors502(tmpErrors502);
     setErrorsOther(tmpErrorsOther);
-    console.log(nowErrors);
     setErrors500Percent((tmpErrors500 * 100) / nowErrors);
     setErrors501Percent((tmpErrors501 * 100) / nowErrors);
     setErrors502Percent((tmpErrors502 * 100) / nowErrors);
     setErrorsOtherPercent((tmpErrorsOther * 100) / nowErrors);
-
     setactiveButton(type);
   }, [type, data]);
 
   return (
     <>
-      <CButtonGroup role="group" aria-label="nav" className={styles.nav}>
-        <CButton
-          onClick={() => setType(0)}
-          color="dark"
-          className={styles.navButton}
-          variant="outline"
-          active={activeButton === 0}
-        >
-          Last hour
-        </CButton>
-        <CButton
-          onClick={() => setType(1)}
-          color="dark"
-          className={styles.navButton}
-          variant="outline"
-          active={activeButton === 1}
-        >
-          Today
-        </CButton>
-        <CButton
-          onClick={() => setType(2)}
-          color="dark"
-          className={styles.navButton}
-          variant="outline"
-          active={activeButton === 2}
-        >
-          Yesterday
-        </CButton>
-        <CButton
-          onClick={() => setType(3)}
-          color="dark"
-          className={styles.navButton}
-          variant="outline"
-          active={activeButton === 3}
-        >
-          Last 3 days
-        </CButton>
-      </CButtonGroup>
+      <div className={styles.nav}>
+        <Button title="Last hour" onClick={() => setType(0)} active={activeButton === 0} />
+        <Button title="Today" onClick={() => setType(1)} active={activeButton === 1} />
+        <Button title="Yesterday" onClick={() => setType(2)} active={activeButton === 2} />
+        <Button title="Last 3 days" onClick={() => setType(3)} active={activeButton === 3} />
+      </div>
 
       <div className={styles.errorsInfo}>
         <div className={`${styles.errorsInfoItem} ${errorsColor}`}>
@@ -172,29 +117,16 @@ const DataParse = (data: dataPropsElem[]) => {
         </div>
       </div>
 
-      <CProgressStacked className={styles.progress}>
-        <CProgress color="warning" value={errors500Percent} />
-        <CProgress value={errors501Percent} />
-        <CProgress color="info" value={errors502Percent} />
-        <CProgress color="secondary" value={errorsOtherPercent} />
-      </CProgressStacked>
+      <ProgressBar error500={errors500Percent} error501={errors501Percent} error502={errors502Percent} other={errorsOtherPercent} />
 
       <div className={styles.progressInfo}>
-        <div className={`${styles.progressInfoItem} warning`}>
-          Error 500: {errors500}
-        </div>
-        <div className={`${styles.progressInfoItem} primary`}>
-          Error 501: {errors501}
-        </div>
-        <div className={`${styles.progressInfoItem} info`}>
-          Error 502: {errors502}
-        </div>
-        <div className={`${styles.progressInfoItem} secondary`}>
-          Other: {errorsOther}
-        </div>
+        <ProgressIcon color="color1" value={errors500} title="Error 500" />
+        <ProgressIcon color="color2" value={errors501} title="Error 501" />
+        <ProgressIcon color="color3" value={errors502} title="Error 502" />
+        <ProgressIcon color="color4" value={errorsOther} title="Other" />
       </div>
 
-      <div className={styles.variants}>
+      <div>
         <Variant
           color={"green"}
           title="Searches"
@@ -234,8 +166,7 @@ const DataParse = (data: dataPropsElem[]) => {
           infoTitle={`STR: 6.2% \n Avg. Check: 8 903`}
           infoText={
             <p>
-              Help <a href="#">STR</a>, <a href="#">Booking</a>,
-              <a href="#">Avg. Check</a>
+              Help <a href="#">STR</a>, <a href="#">Booking</a>,<a href="#">Avg. Check</a>
             </p>
           }
           infoTextGray="Conversion from clicks to bookings on all devices."

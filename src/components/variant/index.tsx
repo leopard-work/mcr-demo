@@ -12,16 +12,7 @@ type variantProps = {
   infoTextGray: string;
 };
 
-const Variant: FC<variantProps> = ({
-  color,
-  title,
-  percent,
-  yesterday,
-  friday,
-  infoTitle,
-  infoText,
-  infoTextGray,
-}) => {
+const Variant: FC<variantProps> = ({ color, title, percent, yesterday, friday, infoTitle, infoText, infoTextGray }) => {
   return (
     <div className={`${styles.wrapper} ${color}`}>
       <div className={styles.icon}>

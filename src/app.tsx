@@ -1,4 +1,3 @@
-import "@coreui/coreui/dist/css/coreui.min.css";
 import "@scss/main.scss";
 import HomePage from "@views/home-page/home-page";
 import { useEffect, useRef, useState } from "react";
