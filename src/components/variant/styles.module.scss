@@ -1,0 +1,115 @@
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px var(--color-gray);
+
+    &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border: none;
+    }
+
+    &[class~="green"] {
+        .icon span {
+            background-color: var(--color-green);
+        }
+
+        .mainTitle span {
+            background-color: var(--color-green);
+        }
+    }
+
+    &[class~="red"] {
+        .icon span {
+            background-color: var(--color-red);
+        }
+
+        .mainTitle span {
+            background-color: var(--color-red);
+        }
+
+        .infoTitle {
+            color: var(--color-red);
+        }
+    }
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 20px;
+
+    span {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        background-color: var(--color-black);
+        border: solid 2px var(--color-white);
+        border-radius: 50%;
+        right: 0;
+        top: 0;
+    }
+}
+
+.main {
+    width: 220px;
+}
+
+.mainTitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 2px;
+
+    span {
+        font-size: 14px;
+        display: inline-block;
+        padding: 1px 5px;
+        border-radius: 12px;
+        color: var(--color-white);
+        margin-left: 5px;
+    }
+}
+
+.mainText {
+    span {
+        font-size: 26px;
+    }
+
+    &[class~="gray"] {
+        color: var(--color-gray-100);
+    }
+}
+
+.info {
+    a {
+        color: var(--color-blue);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        white-space: pre-line;
+        margin-top: 5px;
+
+        &[class~="gray"] {
+            color: var(--color-gray-100);
+        }
+    }
+}
+
+.infoTitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 2px;
+}

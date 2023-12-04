@@ -1,0 +1,116 @@
+:root {
+    --cui-btn-color: #333;
+}
+
+.wrapper {
+    width: 770px;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 0 rgba(34, 60, 80, 0.2);
+    border-radius: 20px;
+}
+
+.title {
+    margin-bottom: 25px;
+}
+
+.nav {
+    margin-bottom: 40px;
+    display: block;
+}
+
+.navButton {
+    color: var(--color-primary);
+    border-color: var(--color-gray);
+    padding: 8px 30px;
+
+    &[class~="active"], &:hover {
+        background-color: var(--color-blue);
+        border-color: var(--color-blue);
+    }
+}
+
+.errorsInfo {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 20px;
+}
+
+.errorsInfoItem {
+    width: 33.3333%;
+    padding-left: 20px;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        content: "";
+        left: 0;
+        top: 15px;
+        border-radius: 50%;
+    }
+
+    &[class~="green"]::before {
+        background-color: var(--color-green);
+    }
+
+    &[class~="red"]::before {
+        background-color: var(--color-red);
+    }
+}
+
+.errorsInfoItemTitle {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.errorsInfoItemText {
+    color: var(--color-gray-100);
+}
+
+.progress {
+    margin-bottom: 20px;
+}
+
+.progressInfo {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 40px;
+}
+
+.progressInfoItem {
+    margin-right: 25px;
+    font-weight: 600;
+    padding-left: 20px;
+    position: relative;
+
+    &::before {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 8px;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &[class~="warning"]::before {
+        background-color: var(--cui-warning);
+    }
+
+    &[class~="primary"]::before {
+        background-color: var(--cui-primary);
+    }
+
+    &[class~="info"]::before {
+        background-color: var(--cui-info);
+    }
+
+    &[class~="secondary"]::before {
+        background-color: var(--cui-secondary);
+    }
+}

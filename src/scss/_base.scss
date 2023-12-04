@@ -1,0 +1,38 @@
+:root {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-primary: #333;
+    --color-blue: #2895f0;
+    --color-gray: #d9d9d9;
+    --color-gray-100: #a0b0b9;
+    --color-green: #8cc250;
+    --color-red: #fd6d6b;
+}
+
+* {
+    font-family: var(--font-primary);
+    box-sizing: border-box;
+    color: var(--color-primary)
+}
+
+strong {
+    font-weight: 700;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}

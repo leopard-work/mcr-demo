@@ -1,0 +1,57 @@
+[{
+  "date": "2023-12-04 12:00",
+  "errors-500": 1,
+  "errors-501": 2,
+  "errors-502": 3,
+  "errors-other": 4,
+  "zeros": 2,
+  "timeouts": 12
+},{
+  "date": "2023-12-04 11:00",
+  "errors-500": 6,
+  "errors-501": 1,
+  "errors-502": 0,
+  "errors-other": 0,
+  "zeros": 10,
+  "timeouts": 11
+},{
+  "date": "2023-12-04 10:00",
+  "errors-500": 1,
+  "errors-501": 2,
+  "errors-502": 3,
+  "errors-other": 4,
+  "zeros": 1,
+  "timeouts": 1
+},{
+  "date": "2023-12-03 12:00",
+  "errors-500": 1,
+  "errors-501": 2,
+  "errors-502": 3,
+  "errors-other": 4,
+  "zeros": 1,
+  "timeouts": 1
+},{
+  "date": "2023-12-03 11:00",
+  "errors-500": 1,
+  "errors-501": 2,
+  "errors-502": 3,
+  "errors-other": 4,
+  "zeros": 1,
+  "timeouts": 100
+},{
+  "date": "2023-12-02 11:00",
+  "errors-500": 1,
+  "errors-501": 2,
+  "errors-502": 3,
+  "errors-other": 4,
+  "zeros": 1,
+  "timeouts": 1
+},{
+  "date": "2023-12-01 11:00",
+  "errors-500": 12,
+  "errors-501": 20,
+  "errors-502": 32,
+  "errors-other": 44,
+  "zeros": 11,
+  "timeouts": 12
+}]
